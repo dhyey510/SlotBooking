@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+     <!-- link for navbar icon -->
+     <link rel="icon" href="./Img/scissors-cut-cutlery-cutter-fork-knife-sizer-icon-18-B1.png">
+
+      <!-- link for stylesheet -->
+      <link href="/css/slot.css" rel="stylesheet" type="text/css">
+
+     <!-- link for fontawesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+     <!-- link for font -->
+    <link href="https://fonts.googleapis.com/css?family=Stoke|Titillium+Web&display=swap" rel="stylesheet">
+
+    <!-- for Animation on scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <title>LookBooker -<%= info[0].name%></title>
+</head>
+<body>
+    
+    <!-- for navbar -->
+    <header>
+        <div class="container hero">
+            <nav data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
+                <div class="logo">
+                    <img src="/Img/icon.png" alt="sesor">
+                </div>
+                <div class="nav-item">
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/" onclick="signout()">SIGN OUT</a></li>
+                        <li><img src="/Img/dhyey.jpg" ></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- section:salon -->
+    <div class="box1" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="1000">
+        <div class="box-img">
+            <img src="<%= info[0].img %>" alt="salon">
+        </div>
+        <div class="box-content">
+            <h2><%= info[0].name%></h2>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span><%= info[0].address%></span>
+            </div>
+            <p id="book-now"><i class="fas fa-plus"></i><a href="#">Book Now</a></p>
+        </div>
+    </div>
+
+    <!-- section:card -->
+    <div class="slot">
+        <div class="current">
+            <h3>Current Slot</h3>
+            <hr>
+            <% for (let i=0;i< info[0].slotusers.length;i++){ %>
+                <% let date_obj=new Date(); %>
+                <% if((parseInt(info[0].slotusers[i].app_time.slice(0,2)) >= parseInt(date_obj.getHours())) && (parseInt(info[0].slotusers[i].app_time.slice(0,2))<=parseInt(date_obj.getHours())+1)){ %>
+                    <div class="card">
+                        <div class="name">
+                            <img src="<%=info[0].slotusers[i].imgurl %>" alt="profile">
+                            <h3><%=info[0].slotusers[i].name %></h3>
+                        </div>
+                        <p>App. Time : <span><%=info[0].slotusers[i].app_time %></span></p>
+                        <p>Max. Time : 
+                            <span>
+                                <%=info[0].slotusers[i].max_time %> hr
+                            </span>
+                        </p>
+                    </div>
+              <% } %>
+            <% } %>
+
+        </div>
+
+        <div class="pending">
+            <h3>Pending Slot</h3>
+            <hr>
+           <% for (let i=0;i< info[0].slotusers.length;i++){ %>
+                <% let date_obj=new Date(); %>
+                <% if((parseInt(info[0].slotusers[i].app_time.slice(0,2)) > (parseInt(date_obj.getHours()) + 1)) && (parseInt(info[0].slotusers[i].app_time.slice(0,2)) <= (parseInt(date_obj.getHours()) - 2))){ %>
+                    <div class="card">
+                        <div class="name">
+                            <img src="<%=info[0].slotusers[i].imgurl %>" alt="profile">
+                            <h3><%=info[0].slotusers[i].name %></h3>
+                        </div>
+                        <p>App. Time : <span><%=info[0].slotusers[i].app_time %></span></p>
+                    </div>
+               <% } %>
+            <% } %>
+        </div>
+
+        <div class="delay">
+            <h3>Delay Slot</h3>
+            <hr>
+           <% for (let i=0;i< info[0].slotusers.length;i++){ %>
+               <% let date_obj=new Date(); %>
+               <% if(parseInt(info[0].slotusers[i].app_time.slice(0,2)) == (parseInt(date_obj.getHours()) - 2)){ %>
+                    <div class="card">
+                        <div class="name">
+                            <img src="<%=info[0].slotusers[i].imgurl %>" alt="profile">
+                            <h3><%= info[0].slotusers[i].name %></h3>
+                        </div>
+                        <p>App. Time : <span><%=info[0].slotusers[i].app_time %></span></p>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+
+    </div>
+
+    <!-- section:form -->
+    <form class="form-bg" id="form" action="/book/<%= info[0].name%>" method="POST">
+        <div class="form">
+            <p>Book Now</p>
+            <span id="cancel">X</span>
+            <hr>
+            <div class="name-time">
+                <label for="user-name">Name</label>
+                <input type="text" name="usname" autocomplete="off">
+                <label for="app-time" id="app-time">Appoinment Time</label>
+                <input type="text" name="aptime">
+
+            </div>
+            <div class="checkbox">
+                <p>Please Select What You Do</p>
+                <div class="check-content">
+                    <input type="checkbox" name="haircut" id="haircut">haircut
+                </div>
+                <div class="check-content">
+                    <input type="checkbox" name="shaving" id="Shaving">Shaving
+                </div>
+                <div class="check-content">
+                    <input type="checkbox" name="massage" id="massage">Massage
+                </div>
+                
+            </div>
+            <button id="sendbtn" class="btn" type="submit">BOOK</button>
+        </div>
+    </form>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/Js/slot.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

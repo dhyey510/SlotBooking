@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/login.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+  <script src="../public/Js/form.js"></script>
+  
+  <title>Document</title>
+</head>
+<body>
+  <div id="formcontainer" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="500">
+    <h1>Login Here</h1>
+    <hr>
+      <p>Email</p>
+      <input type="text" placeholder=" Enter email" id="email">
+      <p>Password</p>
+      <input type="password" placeholder=" Enter password" id="password">
+      <div class="btn">
+        <button onclick="signin()" id="signin"><a href="/book"> Sign in </a></button>
+        <button onclick="signup()" id="signup"><a href="/book">sign up</a></button>
+      </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+      AOS.init();
+  </script>
+
+</body>
+</html>
