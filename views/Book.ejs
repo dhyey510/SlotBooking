@@ -21,92 +21,66 @@
     <!-- for Animation on scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <title>LookBooker</title>
+    <title>Book | LookBooker</title>
 </head>
 <body>
      <header>
-        <div class="container hero">
+        <div class="hero">
             <nav data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
                 <div class="logo">
                     <img src="/Img/icon.png" alt="sesor">
                 </div>
                 <div class="nav-item">
                     <ul>
-                        <li><a href="/">HOME</a></li>
-                        <li><a href="#">BOOKING STATUS</a></li>
-                        <li><a href="/" onclick="signout()">SIGN OUT</a></li>
-                        <li><a href="#" id="profile"></a></li>
+                        <li><a href="/">Home</a></li>
+                        <!-- <li><a href="#">Booking Status</a></li> -->
+                        <li><a href="/logout">Sign Out</a></li>
+                        <li><a href="#" id="profile"><img src='/uploadas/<%=user.imgurl %>'></a></li>
                     </ul>
                 </div>
             </nav>
-            <div class="main">
-                <span><i class="fas fa-chevron-left fa-3x"></i></span>
-                <span><i class="fas fa-chevron-right fa-3x"></i></span>
-            </div>
         </div>
     </header>
 
     <!-- appoinment date -->
-    <section class="appoinment" data-aos="flip-up" data-aos-duration="2000" data-aos-delay="1000">
-        <h3>Choose Youre Appoinment Date</h3>
-        <input type="date" name="date" id="appoinment-date">
-        <i class="far fa-calendar-alt fa-3x"></i>
-    </section>
+    <!-- <section class="appoinment" data-aos="flip-up" data-aos-duration="2000" data-aos-delay="1000"> -->
+        <!-- <h3>Sea</h3> -->
+        <!-- <input type="text" name="search" id="search" placeholder="Search your salon by name"> -->
+        <!-- <i class="far fa-calendar-alt fa-3x"></i> -->
+    <!-- </section> --> 
 
 
     <h3 data-aos="fade-right" data-aos-duration="2000" data-aos-delay="500">Please Select Your Salon For Appoinment</h3>
     <hr data-aos="fade-right" data-aos-duration="2000" data-aos-delay="500">
     <section class="box">
+        <%for(let i=0;i<saloninfo.length;i++){%>
         <div class="box1" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="1000">
-            <div class="box-img"></div>
+            <div class="box-img">
+                <img src='/uploadas/<%=saloninfo[i].imgurl %>' id="pro-img">
+            </div>
             <div class="box-content">
-                <p><a href="/book/<%=saloninfo[0].name %>"><%=saloninfo[0].name %></a></p>
+                <p><a href='/book/<%=saloninfo[i].username %>'><%=saloninfo[i].username %></a></p>
                 <div class="location">
                     <i class="fas fa-map-marker-alt"></i>
-                    <p><%=saloninfo[0].address %></p>
+                    <p><%=saloninfo[i].address %></p>
                 </div>
                 <div class="website">
                     <i class="fab fa-google"></i>
-                    <p><%= saloninfo[0].website%></p>
+                    <p><%= saloninfo[i].website%></p>
                 </div>
                 <p id="open">Open</p>
                 <div class="star">
-                    <i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i>
+                    <i class="fas fa-star fa-2x"></i>
+                    <i class="fas fa-star fa-2x"></i>
+                    <i class="fas fa-star fa-2x"></i>
                     <i class="fas fa-star fa-2x"></i>
                     <i class="fas fa-star fa-2x"></i>
                 </div>
             </div>
         </div>
-
-        <div class="box2" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="500">
-            <div class="box-img"></div>
-            <div class="box-content"><a href="/book/<%= saloninfo[1].name%>">
-                <p><%= saloninfo[1].name%></a></p>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p><%= saloninfo[1].address %></p>
-                </div>
-                <div class="website">
-                    <i class="fab fa-google"></i>
-                    <p><%= saloninfo[1].website %></p>
-                </div>
-                <p id="open">Open</p>
-                <div class="star">
-                    <i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i><i class="fas fa-star fa-2x"></i>
-                    <i class="fas fa-star fa-2x"></i>
-                    <i class="fas fa-star fa-2x"></i>
-                </div>
-            </div>
-        </div>
-
+        <%}%>
     </section>
-
-
-     <!-- footer -->
-     <footer id="main-footer">
-        <p>LookBooker &COPY; 2019, All Rights Reserved</p>
-    </footer>
-
+        
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();

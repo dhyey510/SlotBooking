@@ -40,25 +40,35 @@ h1{
 
 /* navbar */
 header{
-    background-image: url('/Img/unnamed.jpg');
-    background-size: cover;
-    background-position: center;
-    height:100vh;
+    /* background-image: url('/Img/unnamed.jpg'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    height:90vh;
     width:100%;
     position: relative;
     top:-80px;
     left:0px;
     margin-top: 0px;
+    overflow-y: hidden;
 }
-/* .hero::before{
-    content: '';
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width:100%;
-    height: 100%;
-    background-color: rgba(1, 1, 1, 0.24);
-}  */
+header #myvideo{
+    position: fixed;
+    top:0;
+    left:0;
+    bottom: 0;
+    min-height:100%;
+    min-width:100%;
+    z-index: -5;
+}
+header .videoafter{
+    position: fixed;
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index:-2;
+    background-color: rgba(0,0,0,0.70);
+}
 nav{
     width:100%;
     background-color: rgba(0,0,0,0);
@@ -119,6 +129,60 @@ nav{
 .main{
     position: absolute;
     top:40%;
+    width:90%;
+    height:100%;
+}
+.main h1{
+    text-align: center;
+    margin-right:10%;
+}
+.main h1 span{
+    color:var(--secondary-color);
+    opacity: 0;
+    display: inline-block;
+    animation: animate 1s linear forwards;
+}
+@keyframes animate{
+    0%{
+        opacity: 0;
+        transform: rotateY(90deg);
+        filter: blur(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: rotateY(0deg);
+        filter: blur(0px);
+    }
+}
+.main h1 span:nth-child(1){
+    animation-delay: 0.5s;
+}
+.main h1 span:nth-child(2){
+    animation-delay: 0.75s;
+}
+.main h1 span:nth-child(3){
+    animation-delay: 1s;
+}
+.main h1 span:nth-child(4){
+    animation-delay: 1.5s;
+}
+.main h1 span:nth-child(5){
+    animation-delay: 1.75s;
+}
+.main h1 span:nth-child(6){
+    animation-delay: 2s;
+}
+.main h1 span:nth-child(7){
+    animation-delay: 2.5s;
+}
+.main h1 span:nth-child(8){
+    animation-delay: 2.7s;
+}
+.main h1 span:nth-child(9){
+    animation-delay: 3s;
+}
+.main h1 span:nth-child(10){
+    animation-delay: 3.5s;
 }
 .main p{
     font-size: 30px;
@@ -127,6 +191,13 @@ nav{
     justify-content: center;
     color:#B4B1B1;
     width:70%;
+    text-align: center;
+    margin-left:8%;
+    margin-top:4%;
+}
+.btn{
+    margin-top:3%;
+    margin-left:38%;
 }
 .btn i{
     padding-left:10px;
@@ -156,140 +227,3 @@ nav{
     }
 }
 
-
-/* section : About us */
-.about h3{
-    font-weight: 600;
-    font-size: 50px;
-    text-align: center;
-    color: #000000;
-    margin-bottom: 2rem;
-}
-.about hr{
-    border: 2px solid #FF7315;
-    width:40%;
-    margin-bottom: 5rem;
-}
-.about-content{
-    width:100vw;
-    height:100%;
-    background-image: url('/Img/about.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 2rem;
-    margin-bottom: 5rem;
-}
-/* .about-content::after{
-    content: '';
-    position: absolute;
-    left: 0px;
-    top: 1042px;
-    width:100%;
-    height: 580px;
-    background-color: rgba(1, 1, 1, 0.24);
-    display: flex;
-    justify-content: center;
-} */
-.about-content p{
-    margin:6rem auto;
-    width:60%;
-    border: 2px var(--secondary-color) solid;
-    box-shadow: 0px 4px 5px #FFFFFF;
-    font-weight: 600;
-    font-size: 50px;
-    line-height: 91px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* section : our team */
-
-.our-team h3{
-    font-weight: 600;
-    font-size: 50px;
-    text-align: center;
-    color: #000000;
-    margin-bottom: 2rem;
-    margin-top:2rem;
-}
-.our-team hr{
-    border: 2px solid #FF7315;
-    width:40%;
-    margin-bottom: 5rem;
-}
-#developing-team{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow:auto ;
-    overflow-x: hidden;
-    height:50rem;
-}
-#developing-team .card1{
-    width:40%;
-    /* height:21rem; */
-    overflow: auto;
-    position: absolute;
-    top:180px;
-    left:80px;
-    box-shadow: 0px 9px 38px -15px rgba(0,0,0,0.7);
-    text-align: center;
-    line-height: 2rem;
-}
-#developing-team .card2{
-    width:40%;
-    /* margin-left: 10px; */
-    /* height:20rem; */
-    overflow: auto;
-    line-height: 2rem;
-    position: absolute;
-    top:180px;
-    right:80px;
-    /* right:50px; */
-    box-shadow: 0px 9px 38px -15px rgba(0,0,0,0.7);
-    text-align: center;
-}
-#developing-team .profile-img{
-    z-index:2;
-    position: absolute;
-    top:50px;
-    left:350px;
-    height:150px;
-    width:150px;
-    background: url('/Img/dhyey.jpg') no-repeat center center/cover;
-    border-radius: 50%;
-    box-shadow: 0px 9px 38px -15px rgba(0,0,0,0.7);
-}
-#developing-team .profile-img2{
-    z-index:2;
-    position: absolute;
-    top:50px;
-    right:350px;
-    height:150px;
-    width:150px;
-    background: url('/Img/priyansh.JPG') no-repeat center center/cover;
-    border-radius: 50%;
-    box-shadow: 0px 9px 38px -15px rgba(0,0,0,0.7);
-}
-#developing-team .card1  p,#developing-team .card2  p{
-    font-size: 1.5rem;
-    margin-top:3rem;
-}
-#developing-team .card1 table,#developing-team .card2 table{
-    text-align: center;
-    padding:2rem;
-}
-#developing-team .card1 table td:nth-child(1),#developing-team .card2 table td:nth-child(1){
-    border-right: 5% dotted #333;
-}
-
-
-/* Footer */
-#main-footer{
-    padding:20px;
-    color:#fff;
-    background:  rgba(1, 1, 1, 0.84);
-    text-align: center;
-}

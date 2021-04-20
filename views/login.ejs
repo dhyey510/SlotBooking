@@ -3,33 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/login.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
-  <script src="../public/Js/form.js"></script>
   
-  <title>Document</title>
+  <!-- tab icon -->
+  <link rel="icon" href="./Img/scissors-cut-cutlery-cutter-fork-knife-sizer-icon-18-B1.png">
+  
+  <link rel="stylesheet" href="/css/login.css">
+  
+  <!-- aos lib -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+
+  <title>Login | LookBooker</title>
 </head>
 <body>
-  <div id="formcontainer" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="500">
-    <h1>Login Here</h1>
-    <hr>
-      <p>Email</p>
-      <input type="text" placeholder=" Enter email" id="email">
-      <p>Password</p>
-      <input type="password" placeholder=" Enter password" id="password">
-      <div class="btn">
-        <button onclick="signin()" id="signin"><a href="/book"> Sign in </a></button>
-        <button onclick="signup()" id="signup"><a href="/book">sign up</a></button>
+  <div class="container" id="container">
+    <div class="form-container sign-up-container">
+        
+      <!-- sign up form -->
+        <form action="/signup" method="POST" id="signup" enctype="multipart/form-data">
+            <h1>Create Account</h1>
+            <img src="/Img/bgperson.jpg" id="profile-img">
+            <div class="btns">
+                <label class="custom-file">Choose Image
+                    <input type="file" name="img-uploade" id="img-upload">
+                </label>
+            </div>
+            <input type="text" placeholder="Name" name="username" id="username" autocomplete="off"/>
+            <input type="email" placeholder="Email" name="email" id="email"/>
+            <input type="password" placeholder="Password" name="password" id="password"/>
+            <select name="issalon" id="salon">
+              <option value="" selected hidden disabled>Choose category</option>
+              <option value="Salon">Salon</option>
+              <option value="User">User</option>
+            </select>
+            <input type="submit" value="submit" class="submitbtn">
+        </form>
+
+    </div>
+    <div class="form-container sign-in-container">
+      
+      <!-- login form -->
+      <form action="/login" id="login" method="POST">
+        <h1>Sign In</h1>
+        <hr>
+        <input type="text" placeholder="Username" name="username" />
+        <input type="password" placeholder="Password" name="password"/>
+        <button>Sign In</button>
+      </form>
+
+
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+                To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+        </div>
       </div>
+    </div>
   </div>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-      AOS.init();
-  </script>
-
+<script src="/Js/form.js"></script>
 </body>
 </html>

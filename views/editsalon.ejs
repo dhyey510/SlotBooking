@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link for navbar icon -->
+    <link rel="icon" href="./Img/scissors-cut-cutlery-cutter-fork-knife-sizer-icon-18-B1.png">
+
+    <!-- link for stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/editsalon.css">
+
+    <!-- link for fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+    <!-- link for font -->
+    <link href="https://fonts.googleapis.com/css?family=Stoke|Titillium+Web&display=swap" rel="stylesheet">
+
+    <!-- for Animation on scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <title>Edit | LookBooker</title>
+
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <nav >
+                <div class="logo">
+                    <img src="/Img/icon.png" alt="sesor">
+                </div>
+                <div class="nav-item">
+                    <ul>
+                        <li><a href="/<%=user.id %>/salonhome">Home</a></li>
+                        <li><a href="/logout">Sign Out</a></li>
+                        <li><a href='/<%=user.id%>/editsalon' id="profile"><img src='/uploadas/<%=user.imgurl %>'></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="edit">
+        <form action="/<%= user.id%>/savepro" method="POST">
+            <h1>Edit Profile</h1>
+
+            <label for="username">Name</label>
+            <input type="text" value='<%=user.username %>' name="username">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<%=user.email %>">
+
+            <%if(user.website==null){%>
+                <label for="web">Website <span>*</span></label>
+                <input type="text" name="web" id="web" required>
+            <%}else{%>
+                <label for="web">Website <span>*</span></label>
+                <input type="text" name="web" id="web" value="<%=user.website%>">
+            <%}%>
+            
+            <%if(user.address==null){%>
+                <label for="add">Address <span>*</span></label>
+                <textarea name="add" id="dd" cols="30" rows="5" required></textarea>
+            <%}else{%>
+                <label for="add">Address <span>*</span></label>
+                <textarea name="add" id="dd" cols="30" rows="5" required><%=user.address %></textarea>
+            <%}%>   
+
+            <input type="submit" value="Save" class="btn-dark">
+        </form>
+    </section>
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

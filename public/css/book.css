@@ -48,32 +48,23 @@ hr{
 }
 
 /* navbar */
-header{
-    background-image: url(/Img/unnamed.jpg);
-    background-size: cover;
-    background-position: center;
-    height:50vh;
-    width:100%;
-    position: relative;
-    top:-40px;
-    left:0px;
-    margin-top: 0px;
-}
 nav{
+    position: fixed;
+    top:0;
     width:100%;
-    background-color: rgba(0,0,0,0);
-    height: 50px;
+    background-color: black;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 2.5rem;
     z-index: 2;
 }
 .logo img{
-    margin-top:1.5rem;
-    height: 100%;
+    margin-top:1%;
+    height: 50%;
     width:60%;
-}
+    margin-left: 2%;
+}   
 .nav-item ul{
     list-style: none;
     display: flex;
@@ -81,22 +72,27 @@ nav{
 }
 .nav-item ul li{
     color:var(--primary-color);
-    padding: 0.5rem 2rem;
-    margin: 2rem;
+    padding: 0.5% 2rem;
+    margin: 10px 1.5rem;
     font-family: 'Stoke', serif;
 }
 .nav-item ul li a{
     display: block;
     color:var(--primary-color);
     text-decoration: none;
+    font-weight: normal;
 }
-.nav-item ul li:nth-child(4){
-   
-    background-color: rgba(0,0,0,0.78);
+.nav-item ul li img{
+    width:60px;
+    height:60px;
+    position: absolute;
+    right:0;
+    top:0;
     border-radius: 50%;
-    padding: 1.5rem;
-    margin: 2rem;
-    border: 2px var(--secondary-color)solid;
+    margin-right:3%;
+}
+.nav-item ul li #profile:hover{
+    animation: none;
 }
 .nav-item ul li a:hover{
     animation-name:bounce2;
@@ -156,7 +152,7 @@ nav{
 .box{
     margin:2rem;
 }
-.box1,.box2,.box3{
+.box1{
     position: relative;
     display: flex;
     background: rgba(0, 0, 0, 0.81);
@@ -168,32 +164,20 @@ nav{
 }
 .box1 .box-img{
     flex:1;
-    background-image: url(/Img/salon1.jpg);
-    background-position: center;
-    background-size: cover;
+    width:50%;
     margin-right: 2rem;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
 }
-.box2 .box-img{
+#pro-img{
     flex:1;
-    background-image: url(/Img/salon2.jpeg);
-    background-position: center;
-    background-size: cover;
     margin-right: 2rem;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+    width:100%;
+    height:100%;
 }
-.box3 .box-img{
-    flex:1;
-    background-image: url('/Img/salon3.jpeg');
-    background-position: center;
-    background-size: cover;
-    margin-right: 2rem;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-}
-.box1 .box-content,.box2 .box-content,.box3 .box-content{
+.box1 .box-content{
     flex:1;
 }
 .box-content p a{

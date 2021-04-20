@@ -20,7 +20,7 @@
     <!-- for Animation on scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <title>LookBooker -<%= info[0].name%></title>
+    <title><%= info[0].username%> | LookBooker</title>
 </head>
 <body>
     
@@ -34,7 +34,7 @@
                 <div class="nav-item">
                     <ul>
                         <li><a href="/">HOME</a></li>
-                        <li><a href="/" onclick="signout()">SIGN OUT</a></li>
+                        <li><a href="/logout">SIGN OUT</a></li>
                         <li><img src="/Img/dhyey.jpg" ></li>
                     </ul>
                 </div>
@@ -45,10 +45,10 @@
     <!-- section:salon -->
     <div class="box1" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="1000">
         <div class="box-img">
-            <img src="<%= info[0].img %>" alt="salon">
+            <img src="/uploadas/<%=info[0].imgurl %>" alt="salon">
         </div>
         <div class="box-content">
-            <h2><%= info[0].name%></h2>
+            <h2><%= info[0].username%></h2>
             <div class="location">
                 <i class="fas fa-map-marker-alt"></i>
                 <span><%= info[0].address%></span>
@@ -62,18 +62,18 @@
         <div class="current">
             <h3>Current Slot</h3>
             <hr>
-            <% for (let i=0;i< info[0].slotusers.length;i++){ %>
+            <% for (let i=0;i< info[0].slot.length;i++){ %>
                 <% let date_obj=new Date(); %>
-                <% if((parseInt(info[0].slotusers[i].app_time.slice(0,2)) >= parseInt(date_obj.getHours())) && (parseInt(info[0].slotusers[i].app_time.slice(0,2))<=parseInt(date_obj.getHours())+1)){ %>
+                <% if((parseInt(info[0].slot[i].app_time.slice(0,2)) >= parseInt(date_obj.getHours())) && (parseInt(info[0].slot[i].app_time.slice(0,2))<=parseInt(date_obj.getHours())+1)){ %>
                     <div class="card">
                         <div class="name">
-                            <img src="<%=info[0].slotusers[i].imgurl %>" alt="profile">
-                            <h3><%=info[0].slotusers[i].name %></h3>
+                            <img src='/uploadas/<%=info[0].slot[i].imgurl%>' alt="profile">
+                            <h3><%=info[0].slot[i].username %>
                         </div>
-                        <p>App. Time : <span><%=info[0].slotusers[i].app_time %></span></p>
+                        <p>App. Time : <span><%=info[0].slot[i].app_time %></span></p>
                         <p>Max. Time : 
                             <span>
-                                <%=info[0].slotusers[i].max_time %> hr
+                                <%=info[0].slot[i].max_time %> hr
                             </span>
                         </p>
                     </div>
@@ -85,15 +85,15 @@
         <div class="pending">
             <h3>Pending Slot</h3>
             <hr>
-           <% for (let i=0;i< info[0].slotusers.length;i++){ %>
+           <% for (let i=0;i< info[0].slot.length;i++){ %>
                 <% let date_obj=new Date(); %>
-                <% if((parseInt(info[0].slotusers[i].app_time.slice(0,2)) > (parseInt(date_obj.getHours()) + 1)) && (parseInt(info[0].slotusers[i].app_time.slice(0,2)) <= (parseInt(date_obj.getHours()) - 2))){ %>
+                <% if((parseInt(info[0].slot[i].app_time.slice(0,2)) > (parseInt(date_obj.getHours()) + 1)) && (parseInt(info[0].slot[i].app_time.slice(0,2)) <= (parseInt(date_obj.getHours()) - 2))){ %>
                     <div class="card">
                         <div class="name">
-                            <img src="<%=info[0].slotusers[i].imgurl %>" alt="profile">
-                            <h3><%=info[0].slotusers[i].name %></h3>
+                            <img src="<%=info[0].slot[i].imgurl %>" alt="profile">
+                            <h3><%=info[0].slot[i].name %></h3>
                         </div>
-                        <p>App. Time : <span><%=info[0].slotusers[i].app_time %></span></p>
+                        <p>App. Time : <span><%=info[0].slot[i].app_time %></span></p>
                     </div>
                <% } %>
             <% } %>
@@ -102,15 +102,15 @@
         <div class="delay">
             <h3>Delay Slot</h3>
             <hr>
-           <% for (let i=0;i< info[0].slotusers.length;i++){ %>
+           <% for (let i=0;i< info[0].slot.length;i++){ %>
                <% let date_obj=new Date(); %>
-               <% if(parseInt(info[0].slotusers[i].app_time.slice(0,2)) == (parseInt(date_obj.getHours()) - 2)){ %>
+               <% if(parseInt(info[0].slot[i].app_time.slice(0,2)) == (parseInt(date_obj.getHours()) - 2)){ %>
                     <div class="card">
                         <div class="name">
-                            <img src="<%=info[0].slotusers[i].imgurl %>" alt="profile">
-                            <h3><%= info[0].slotusers[i].name %></h3>
+                            <img src="<%=info[0].slot[i].imgurl %>" alt="profile">
+                            <h3><%= info[0].slot[i].name %></h3>
                         </div>
-                        <p>App. Time : <span><%=info[0].slotusers[i].app_time %></span></p>
+                        <p>App. Time : <span><%=info[0].slot[i].app_time %></span></p>
                     </div>
                 <% } %>
             <% } %>
@@ -119,7 +119,7 @@
     </div>
 
     <!-- section:form -->
-    <form class="form-bg" id="form" action="/book/<%= info[0].name%>" method="POST">
+    <form class="form-bg" id="form" action="/book/<%= info[0].username%>" method="POST">
         <div class="form">
             <p>Book Now</p>
             <span id="cancel">X</span>
